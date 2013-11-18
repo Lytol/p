@@ -1,4 +1,4 @@
-# p [![Build Status](https://travis-ci.org/Lytol/p.png)](https://travis-ci.org/Lytol/p)
+# p [![Gem Version](https://badge.fury.io/rb/p.png)](http://badge.fury.io/rb/p) [![Build Status](https://travis-ci.org/Lytol/p.png)](https://travis-ci.org/Lytol/p)
 
 `p` is a project generator
 
