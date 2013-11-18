@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'p'
+
+puts "This is a test"
