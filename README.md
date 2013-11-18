@@ -1,5 +1,4 @@
-p
-=
+# p [![Build Status](https://travis-ci.org/Lytol/p.png)](https://travis-ci.org/Lytol/p)
 
 `p` is a project generator
 
