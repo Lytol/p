@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'p'
+require 'p/command'
 
-puts "This is a test"
+P::Command.start(ARGV)

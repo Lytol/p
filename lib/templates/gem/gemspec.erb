@@ -1,0 +1,16 @@
+require File.join(File.dirname(__FILE__), 'lib/p')
+
+Gem::Specification.new do |s|
+  s.name        = '<%= @name %>'
+  s.version     = <%= @name %>::VERSION
+  s.date        = '<%= Date.today %>'
+  s.summary     = "<summary>"
+  s.authors     = ["<name>"]
+  s.email       = '<email>'
+  s.files       = [ "lib/<%= @name %>.rb" ]
+  s.homepage    = "<homepage>"
+
+  s.add_development_dependency 'rake', '~> 10.0'
+
+  s.test_files  = Dir.glob('test/*_test.rb')
+end
