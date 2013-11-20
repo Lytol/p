@@ -1,5 +1,3 @@
-require 'fileutils'
-
 module P
   class FileNotFound < StandardError; end
 
@@ -7,26 +5,24 @@ module P
 
     def touch(path)
       say "Touching file `#{path}`" do
-        FileUtils.touch(in_directory(path))
+        FileUtils.touch(destination_file(path))
       end
     end
 
-    def file(path)
+    def file(path, &block)
       say "Creating file `#{path}`" do
-        source = in_template_directory(path)
-        destination = in_directory(path)
+        source = source_file(path)
+        destination = destination_file(path)
 
-        unless File.exists?(source)
-          raise(P::FileNotFound, "missing template file `#{source}`") 
-        end
-
-        FileUtils.cp(source, destination)
+        file = P::Actions::TemplateFile.new(self, source, destination)
+        file.instance_eval(&block) if block_given?
+        file.run!
       end
     end
 
     def directory(path)
       say "Creating directory `#{path}`" do
-        FileUtils.mkdir(in_directory(path))
+        FileUtils.mkdir(destination_file(path))
       end
     end
   end

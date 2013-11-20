@@ -1,8 +1,9 @@
-require 'fileutils'
-
 module P
   class Builder
     include P::Actions
+
+    attr_accessor :template
+
 
     def self.run!(template)
       new(template).run!
@@ -23,6 +24,18 @@ module P
       eval(IO.read(@template.path))
     end
 
+    def source_file(path)
+      File.join(@template.directory, path)
+    end
+
+    def destination_file(path)
+      File.join(base_directory, path)
+    end
+
+    def _binding
+      binding
+    end
+
     private
 
       def copy_template_variables!
@@ -33,14 +46,6 @@ module P
 
       def base_directory
         File.join(Dir.pwd, @name)
-      end
-
-      def in_directory(path)
-        File.join(base_directory, path)
-      end
-
-      def in_template_directory(path)
-        File.join(@template.directory, path)
       end
 
       def announce(str)
