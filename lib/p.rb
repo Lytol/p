@@ -2,7 +2,7 @@ require 'fileutils'
 
 module P
 
-  VERSION = "0.1.3"
+  VERSION = "0.1.4"
 
   def self.template_paths
     [ File.join(File.dirname(__FILE__), "templates") ]
@@ -13,3 +13,5 @@ require_relative "p/template"
 require_relative "p/actions"
 require_relative "p/actions/template_file"
 require_relative "p/builder"
+
+require_relative "ext/string"

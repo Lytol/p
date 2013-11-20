@@ -1,0 +1,9 @@
+require 'minitest/spec'
+require 'minitest/autorun'
+require '<%= @name.snakecase %>'
+
+describe <%= @name.camelcase %> do
+  it "should have semantic version" do
+  <%= @name.camelcase %>::VERSION.must_match /^\d+\.\d+\.\d+$/ 
+  end
+end

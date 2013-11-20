@@ -5,10 +5,10 @@ Gem::Specification.new do |s|
   s.name        = 'p'
   s.version     = P::VERSION
   s.executables << 'p'
-  s.summary     = "A project generator for everything"
+  s.summary     = "p is a project generator - for anything"
   s.authors     = ["Brian Smith"]
   s.email       = 'bsmith@swig505.com'
-  s.files       = FileList[ "lib/**/*.rb", "[A-Z]*" ]
+  s.files       = FileList[ "lib/**/*", "[A-Z]*" ]
   s.homepage    = "https://github.com/Lytol/p"
   s.license     = 'MIT'
 
