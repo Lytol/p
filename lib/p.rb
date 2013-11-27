@@ -2,7 +2,7 @@ require 'fileutils'
 
 module P
 
-  VERSION = "0.1.4"
+  VERSION = "0.1.5"
 
   def self.template_paths
     [ File.join(File.dirname(__FILE__), "templates") ]
