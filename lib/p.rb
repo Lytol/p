@@ -2,10 +2,13 @@ require 'fileutils'
 
 module P
 
-  VERSION = "0.1.5"
+  VERSION = "0.2.0"
 
   def self.template_paths
-    [ File.join(File.dirname(__FILE__), "templates") ]
+    template_paths = []
+    template_paths << File.join(ENV['HOME'], ".p") # ~/.p directory
+    template_paths << File.join(File.dirname(__FILE__), "templates") # Built-in template directory
+    template_paths
   end
 end
 

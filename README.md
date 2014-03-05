@@ -6,14 +6,21 @@
 Usage
 -----
 
-`p <project-type> <project-name>`
+`p new [--template=<template>] <project-name>`
 
-The command will create a new directory called `project-name` and use the specified template to create a default project within it.
+The `new` command will generate a new project by creating a new directory called `project-name` and using the specified template. There are built-in templates (explained below), but you can also define your own templates and place them in `~/.p`. If you do not specify a template, it will use the default template which is just a README.
+
+### Built-in Templates
+
+- **Default**: `p new <gem-name>` - See <https://github.com/Lytol/p/blob/master/lib/templates/default.rb>
+- **Rubygem**: `p new -t gem <gem-name>` - See <https://github.com/Lytol/p/blob/master/lib/templates/gem.rb>
+- **Sinatra**: `p new -t sinatra <app-name>` - See <https://github.com/Lytol/p/blob/master/lib/templates/sinatra.rb>
 
 
-### Rubygem
+Creating your own templates
+---------------------------
 
-`p gem <gem-name>` - See <https://github.com/Lytol/p/blob/master/lib/templates/gem.rb>
+You can create your own templates within your home directory at `~/.p`. The template name will be the filename without the `.rb` extension. For example, if you create a template file called `go.rb`, then you could generate a Go project with `p new --template=go myapp`.
 
 
 Contributing

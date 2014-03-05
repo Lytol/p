@@ -7,6 +7,7 @@ module P
         @builder = builder
         @source = source
         @destination = destination
+        @content = nil
       end
 
       def source(src = nil)
@@ -17,16 +18,28 @@ module P
         end
       end
 
-      def run!
-        unless File.exists?(@source)
-          raise(P::FileNotFound, "missing template file `#{@source}`") 
-        end
-
-        if File.extname(@source) == ".erb"
-          content = ERB.new(IO.read(@source)).result(@builder._binding)
-          IO.write(@destination, content)
+      def content(content = nil)
+        if content.nil?
+          @content
         else
-          FileUtils.cp(@source, @destination)
+          @content = content
+        end
+      end
+
+      def run!
+        if @content
+          IO.write(@destination, @content)
+        else
+          unless File.exists?(@source)
+            raise(P::FileNotFound, "missing template file `#{@source}`") 
+          end
+
+          if File.extname(@source) == ".erb"
+            content = ERB.new(IO.read(@source)).result(@builder._binding)
+            IO.write(@destination, content)
+          else
+            FileUtils.cp(@source, @destination)
+          end
         end
       end
     end
